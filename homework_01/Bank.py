@@ -94,6 +94,9 @@ else:
                 print('='*14,'Account Information','='*14)
                 ShowAccount(accountList)
             elif(key=='2'):
+                '''
+                Deposits method
+                '''
                 print('='*14,'Deposits','='*14)
                 name = input('Please Enter Account Name: ')
                 #Check name
@@ -113,13 +116,16 @@ else:
                     print('='*10,'Sorry, Invalid Name','='*5)
 
             elif(key=='3'):
+                '''
+                Withdraw method
+                '''
                 print('='*14,'Withdraw','='*14)
                 name = input('Please Enter Account Name: ')
-
+                #find the place of Enter Account Name place
                 for i in range(len(accountList)):
                     if(accountList[i]['Name']==name):
                         number=i
-                        
+                #reduce the money from the selected account
                 if(checkName(name)):
                     money = input('Please Enter Money Amount: ')
                     if(int(money)<int(accountList[number]['Current Balance'])):
