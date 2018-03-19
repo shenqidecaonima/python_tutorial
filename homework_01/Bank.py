@@ -9,7 +9,7 @@ print('='*41)
 
 #Account List
 accountList=[
-    {'Name':'Moyuan','Current Balance':'1000'}]
+    {'Name':'Moyuan','Current Balance':'1000','Password':'1234'}]
 
 #define a function to show the information about the Account
 def ShowAccount(accountList):
@@ -20,14 +20,14 @@ def ShowAccount(accountList):
     if len(accountList)==0:
         print('======No Data======')
         return
-    print("|{0:<5}| {1:<10}| {2:<5}|".format("sid","Name","Current Balance"))
+    print("|{0:<5} |{1:<10}| {2:<5}".format("ID","Name","Current Balance"))
     print("-"*40)
     for i in range(len(accountList)):
-        print('|{0:<5} | {1:<10}| {2:<5}'.format(i+1,accountList[i]['Name'],accountList[i]['Current Balance']))
+        print('|{0:<5} |{1:<10}| {2:<5}'.format(i+1,accountList[i]['Name'],accountList[i]['Current Balance']))
 
-#define a int number money
-money = 0
 
+number = 0 #define a global int
+hasName = False
 #define a function to save money into the Account
 
 
@@ -40,6 +40,25 @@ while True:
         ShowAccount(accountList)
     elif(key=='2'):
         print('='*14,'Deposits','='*14)
+        name = input('Please Enter Account Name: ')
+        #Check name
+        for i in range(len(accountList)):
+            if(accountList[i]['Name']==name):
+                number=i
+                hasName=True
+        #Check if there is enough money
+        if(hasName==True):
+            money = input('Please Enter Money Amount: ')
+            if(int(money)<int(accountList[number]['Current Balance'])):
+                money = accountList[number]['Current Balance'] + money #add the money into account
+                accountList[number]['Current Balance'] = money
+            else:
+                print('='*10,'Sorry, Not Enough Money','='*5)
+        else:
+            print('='*10,'Sorry, Invalid Name','='*5)
+
+
+
     elif(key=='3'):
         print('='*14,'Withdraw','='*14)
     elif(key=='4'):
