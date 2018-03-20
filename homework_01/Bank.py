@@ -107,11 +107,8 @@ else:
                 #Check if there is enough money
                 if(hasName==True):
                     money = input('Please Enter Money Amount: ')
-                    if(int(money)<int(accountList[number]['Current Balance'])):
-                        money = int(accountList[number]['Current Balance']) + int(money) #add the money into account
-                        accountList[number]['Current Balance'] = str(money)
-                    else:
-                        print('='*10,'Sorry, Not Enough Money','='*5)
+                    money = int(accountList[number]['Current Balance']) + int(money) #add the money into account
+                    accountList[number]['Current Balance'] = str(money)
                 else:
                     print('='*10,'Sorry, Invalid Name','='*5)
 
