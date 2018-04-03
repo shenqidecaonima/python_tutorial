@@ -4,7 +4,7 @@
 import pymysql
 
 #获取数据库连接
-db = pymysql.connect(host="localhost",user="root",password="",db="mydb",charset="utf8")
+db = pymysql.connect(host="localhost",user="root",password="0923",db="stu",charset="utf8")
 
 #创建游标对象
 cursor = db.cursor()
@@ -17,9 +17,9 @@ try:
 	m = cursor.execute(sql)
 	# 事务提交
 	db.commit()
-	
+
 	print("成功修改条数：",m)
-	
+
 except Exception as err:
 	#事务回滚
 	db.rollback()
