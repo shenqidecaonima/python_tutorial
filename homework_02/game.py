@@ -117,6 +117,9 @@ class EnemyPlane:
 		self.bullet_list.append(EnemyBullet(self.screen,self.x,self.y))
 		print(len(self.bullet_list))
 
+
+
+
 def key_control(hero_temp):
 	'''键盘控制函数'''
 	#执行退出操作
