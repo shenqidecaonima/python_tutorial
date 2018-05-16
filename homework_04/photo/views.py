@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from photo.models import PhotoInfo
+from datetime import datetime
 # Create your views here.
 
 
@@ -15,11 +16,19 @@ def indexPhoto(request):
     return render(request, 'photo/photo.html',context)
 
 def addPhoto(request):
-
     return render(request,'photo/addPhoto.html')
 
 def insertPhoto(request):
-    pass
+    try:
+        photo = PhotoInfo()
+        photo.photoName = request.post['name']
+        photo.addtime = datetime.now()
+        photo.save()
+        conetext = {"info":"Success"}
+    except:
+        conetext = {"info":"Fail"}
+
+    return render(request,'photo/insertPhoto.html')
 
 def editPhoto(request):
     pass

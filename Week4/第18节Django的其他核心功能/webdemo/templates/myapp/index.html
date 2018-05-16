@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Django的常用Web工具</title>
+</head>
+<body>
+	<h2>Django的常用Web工具</h2>
+	<ul>
+		<li><a href="{% url 'demo1' %}">1.静态文件 </a></li>
+		<li><a href="{% url 'demo3' %}">3.状态保持 </a></li>
+		<li><a href="{% url 'demo5' %}">5.密码管理 </a></li>
+	</ul>
+	<div>注意: 状态保持使用到了数据库，若没有，请先配置，然后执行数据库迁移</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% load static from staticfiles %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登录界面</title>
+<link href="{% static 'myapp/css/mi.css'%}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div class="loginpannel">
+		<div class="tabnav">
+			<span><a href="#">账号登录</a></span><span class="s">|</span><span><a href="#">扫码登录</a></span>
+		</div>
+		<div class="loginform">
+			<form action="" method="post">
+				<div><input name="username" type="text" placeholder="邮箱/手机号码/小米ID"></div>
+				<div><input name="userpwd" type="password" placeholder="密码"></div>
+				<div><input type="submit" value="登录"></div>
+				<div class="otherlogin">
+					<div class="left"><a href="">使用手机短信登录/注册</a></div>
+					<div class="right"><a href="">立即注册</a>|<a href="">忘记密码？</a></div>
+				</div>
+			</form>
+			<img style="margin-left:23px;margin-top:30px;" src="/static/myapp/images/a.png"/>	
+		</div>
+	</div>
+</body>
+</html>
