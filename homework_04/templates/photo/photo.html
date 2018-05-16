@@ -1,0 +1,30 @@
+<!Doctype html>
+<html lang='en'>
+<head>
+  <meta charset="utf-8">
+  <title>相册信息管理</title>
+</head>
+<body>
+  <center>
+    {% include 'photo/base.html' %}
+    <h3>浏览照片信息</h3>
+      <table width='800' border='1'>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Action</th>
+        </tr>
+
+        {% for photo in photolist %}
+          <tr>
+            <td>{{photo.id}}</td>
+            <td>{{photo.name}}</td>
+            <td>{{photo.time | date:"Y-m-d H:i:s"}}</td>
+            <td>编辑 删除</td>
+          </tr>
+        {% endfor %}
+    </table>
+  </center>
+</body>
+</html>
