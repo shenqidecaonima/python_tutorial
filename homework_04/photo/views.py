@@ -21,14 +21,14 @@ def addPhoto(request):
 def insertPhoto(request):
     try:
         photo = PhotoInfo()
-        photo.photoName = request.post['name']
+        photo.photoName = request.POST['name']
         photo.addtime = datetime.now()
         photo.save()
-        conetext = {"info":"Success"}
+        context = {"info":"Success"}
     except:
-        conetext = {"info":"Fail"}
+        context = {"info":"Fail"}
 
-    return render(request,'photo/insertPhoto.html')
+    return render(request,'photo/insertPhoto.html',context)
 
 def editPhoto(request):
     pass

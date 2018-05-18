@@ -19,8 +19,8 @@
         {% for photo in photolist %}
           <tr>
             <td>{{photo.id}}</td>
-            <td>{{photo.name}}</td>
-            <td>{{photo.time | date:"Y-m-d H:i:s"}}</td>
+            <td>{{photo.photoName}}</td>
+            <td>{{photo.addtime | date:"Y-m-d"}}</td>
             <td>编辑 删除</td>
           </tr>
         {% endfor %}
