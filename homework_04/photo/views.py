@@ -24,17 +24,38 @@ def insertPhoto(request):
         photo.photoName = request.POST['name']
         photo.addtime = datetime.now()
         photo.save()
-        context = {"info":"Success"}
+        context = {"info":"Success!"}
     except:
-        context = {"info":"Fail"}
+        context = {"info":"Fail!"}
 
     return render(request,'photo/insertPhoto.html',context)
 
-def editPhoto(request):
-    pass
+def editPhoto(request,uid):
+	try:
+		ob = PhotoInfo.objects.get(id=uid)
+		context={"photo":ob}
+		return render(request,"photo/edit.html",context)
+	except Exception as err:
+		print(err)
+		context = {"info":"没有找到要修改的信息！"}
+		return render(request,"photo/info.html",context)
 
 def updatePhoto(request):
-    pass
+    try:
+        photo = PhotoInfo.objects.get(id=request.POST['id'])
+        photo.photoName = request.POST['name']
+        photo.addtime = datetime.now()
+        photo.save()
+        context = {"info":"修改成功！"}
+    except:
+        context = {"info":"修改失败！"}
+    return render(request,"photo/info.html",context)
 
-def delPhoto(request):
-    pass
+def delPhoto(request,uid):
+    try:
+        ob = PhotoInfo.objects.get(id=uid)
+        ob.delete()
+        context = {"info":"删除成功！"}
+    except:
+        context = {"info":"删除失败！"}
+    return render(request,'photo/info.html',context)

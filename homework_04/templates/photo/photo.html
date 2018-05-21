@@ -3,6 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>相册信息管理</title>
+  <script type="text/javascript">
+    function doDel(url){
+      if(confirm("确定要删除吗？")){
+        window.location=url
+      }
+    }
+  </script>
 </head>
 <body>
   <center>
@@ -21,7 +28,10 @@
             <td>{{photo.id}}</td>
             <td>{{photo.photoName}}</td>
             <td>{{photo.addtime | date:"Y-m-d"}}</td>
-            <td>编辑 删除</td>
+            <td>
+              <a href="{% url 'editPhoto' photo.id%}">编辑</a>
+              <a href="{% url 'delPhoto' photo.id%}">删除</a></td>
+            </td>
           </tr>
         {% endfor %}
     </table>
