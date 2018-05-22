@@ -1,3 +1,4 @@
+{% load static from staticfiles %}
 <!Doctype html>
 <html lang='en'>
 <head>
@@ -28,7 +29,7 @@
           <tr>
             <td>{{photo.id}}</td>
             <td>{{photo.photoName}}</td>
-            <td><img src="./static/pics/{{photo.photoName}}" /></td>
+            <td><img src="static/pics/{{photo.photoName}}" alt="此处该有图片" /></td>
             <td>{{photo.addtime | date:"Y-m-d"}}</td>
             <td>
               <a href="{% url 'editPhoto' photo.id%}">编辑</a>
