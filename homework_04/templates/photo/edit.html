@@ -9,11 +9,12 @@
     {% include 'photo/base.html' %}
     <h3>编辑照片</h3>
     <form action="{% url 'updatePhoto' %}" method="post">
+      <input type="hidden" name="id" value="{{photo.id}}"/>
       {% csrf_token %}
       <table width="280" border="0">
         <tr>
           <td>Name:</td>
-          <td><input type="text" name="name" value="{{photo.name}}" /></td>
+          <td><input type="text" name="name" value="{{photo.photoName}}" /></td>
         </tr>
         <tr>
           <td colspan="2" align="center">

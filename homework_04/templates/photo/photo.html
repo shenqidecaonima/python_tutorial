@@ -19,6 +19,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Photo</th>
             <th>Time</th>
             <th>Action</th>
         </tr>
@@ -27,6 +28,7 @@
           <tr>
             <td>{{photo.id}}</td>
             <td>{{photo.photoName}}</td>
+            <td><img src="./static/pics/{{photo.photoName}}" /></td>
             <td>{{photo.addtime | date:"Y-m-d"}}</td>
             <td>
               <a href="{% url 'editPhoto' photo.id%}">编辑</a>

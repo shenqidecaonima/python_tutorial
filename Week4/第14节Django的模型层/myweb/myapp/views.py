@@ -36,7 +36,8 @@ def delUsers(request,uid):
 	try:
 		#return HttpResponse("id"+uid)
 		ob = Users.objects.get(id=uid)
-		ob.delete()
+		os.remove("./static/pics/"+ob.filename)
+		ob.delete()	
 		context = {"info":"删除成功！"}
 	except:
 		context = {"info":"删除失败！"}
