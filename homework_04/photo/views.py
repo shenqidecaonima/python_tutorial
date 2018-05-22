@@ -16,11 +16,12 @@ def index(request):
 def indexPhoto(request,pIndex):
     '''获取图片信息'''
     list = PhotoInfo.objects.all()
-    p = Paginator(list,2)
+    p = Paginator(list,3)
     if pIndex == "":
     	pIndex="1"
     list2 = p.page(pIndex)
-    context = {"photolist": list2}
+    plist = p.page_range
+    context = {"photolist":list2,"plist":plist,"pIndex":int(pIndex)}
     return render(request, 'photo/photo.html',context)
 
 def addPhoto(request):

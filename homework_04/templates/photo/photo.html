@@ -24,7 +24,6 @@
             <th>Time</th>
             <th>Action</th>
         </tr>
-
         {% for photo in photolist %}
           <tr>
             <td>{{photo.id}}</td>
@@ -38,6 +37,14 @@
           </tr>
         {% endfor %}
     </table>
+
+    {% for i in plist %}
+    {% if i == pIndex %}
+        <b style="color:red">{{i}}</b>
+    {% else %}
+        <a href="{% url 'indexPhoto' i %}">{{i}}</a>
+    {% endif %}
+    {% endfor %}
   </center>
 </body>
 </html>
