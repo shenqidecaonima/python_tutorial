@@ -4,6 +4,7 @@ from photo.models import PhotoInfo
 from datetime import datetime
 import time,os
 from PIL import Image
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -12,10 +13,14 @@ def index(request):
     '''index Page'''
     return render(request, 'photo/index.html')
 
-def indexPhoto(request):
+def indexPhoto(request,pIndex):
     '''获取图片信息'''
     list = PhotoInfo.objects.all()
-    context = {"photolist": list}
+    p = Paginator(list,2)
+    if pIndex == "":
+    	pIndex="1"
+    list2 = p.page(pIndex)
+    context = {"photolist": list2}
     return render(request, 'photo/photo.html',context)
 
 def addPhoto(request):
@@ -52,9 +57,6 @@ def insertPhoto(request):
 def editPhoto(request,uid):
     try:
         ob = PhotoInfo.objects.get(id=uid)
-        os.remove("./static/pics/"+ob.photoName)
-        os.remove("./static/pics/s_"+ob.photoName)
-        ob.delete()
         context={"photo":ob}
         return render(request,"photo/edit.html",context)
     except:
@@ -65,9 +67,14 @@ def updatePhoto(request):
         try:
             '''执行图片的上传'''
             myfile = request.FILES.get("mypic",None)
-            print(myfile)
             if not myfile:
                 return HttpResponse("没有上传文件信息")
+            #删除之前的照片
+            photo = PhotoInfo.objects.get(id=request.POST['id'])
+            prev = photo.photoName
+            os.remove("./static/pics/"+prev)
+            os.remove("./static/pics/s_"+prev)
+            #创建新的文件名
             filename = str(time.time())+"."+myfile.name.split('.').pop()
             destination = open("./static/pics/"+filename,"wb+")
             for chunk in myfile.chunks():      # 分块写入文件

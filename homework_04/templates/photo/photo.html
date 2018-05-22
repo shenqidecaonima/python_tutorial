@@ -29,7 +29,7 @@
           <tr>
             <td>{{photo.id}}</td>
             <td>{{photo.photoName}}</td>
-            <td><img src="static/pics/{{photo.photoName}}" alt="此处该有图片" /></td>
+            <td><img src="/static/pics/{{photo.photoName}}" alt="此处该有图片" width="100px" height="100px"/></td>
             <td>{{photo.addtime | date:"Y-m-d"}}</td>
             <td>
               <a href="{% url 'editPhoto' photo.id%}">编辑</a>

@@ -5,7 +5,7 @@ urlpatterns = [
     path('',views.index, name="index"),
 
     #浏览信息
-    path('photo/',views.indexPhoto, name="indexPhoto"),
+    path('photo/<int:pIndex>',views.indexPhoto, name="indexPhoto"),
     #加载添加表单
     path('photo/add/',views.addPhoto, name="addPhoto"),
     #执行添加
